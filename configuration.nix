@@ -81,9 +81,8 @@
   programs.neovim.viAlias = true;
   programs.neovim.vimAlias = true;
 
-  fonts.fonts = with pkgs; [
-    (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
-  ];
+  fonts.fonts = with pkgs;
+    [ (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; }) ];
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.

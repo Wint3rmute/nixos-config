@@ -14,72 +14,73 @@
   # };
 
   environment.systemPackages = with pkgs; [
-    nixfmt
+    # System
+    grub2
+    powertop
+    tlp
+    networkmanager
+    xorg.xinit
+    acpilight
+    xorg.xf86videointel
+
+    # Cli
+    thefuck
+    devour
     bat
+    feh
     acpi
     htop
     bat
-    alacritty
     zsh
-    grub2
     wget
-    firefox
-    rofi
-    dmenu
     gcc
-    powertop
-    # tlp
-    leftwm
-    noto-fonts
-    feh
     unzip
     killall
+    brightnessctl
+    sox
+    imagemagick
+    tmux
+    file
+    telegram-cli
+    freshfetch
+
+    # Programming
+    nixfmt
     git
-    networkmanager
-    xorg.xinit
     python3
     python39Packages.virtualenv
-    acpilight
-    brightnessctl
+    xclip
+    sumneko-lua-language-server
+    neovide
+    android-studio
+    rustup
+    rust-analyzer
+    cmake
+    gnumake
+    bintools
+
+    # GUI
+    dmenu
+    alacritty
+    firefox
+    leftwm
+    noto-fonts
+    rofi
     dunst
-    sox
-    xorg.xf86videointel
     pavucontrol
     xfce.thunar
-    freshfetch
     lxappearance
     picom-next
     arandr
-    android-studio
-    vscode
     nerdfonts
     zoom-us
     flameshot
     chromium
     gnome.gedit
-    imagemagick
-    tmux
-    file
-    telegram-cli
     tdesktop
-
-    jemalloc # for lvim
-    xclip
-    sumneko-lua-language-server
-    neovide
-    devour
     xoscope
     audacity
-    thefuck
 
-    rustup
-    rust-analyzer
-    #cargo
-    #rustc
-    #rust-analyzer
-    cmake
-    gnumake
-    bintools
   ];
 
 }

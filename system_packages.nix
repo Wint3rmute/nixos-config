@@ -72,7 +72,6 @@
     lxappearance
     picom-next
     arandr
-    nerdfonts
     zoom-us
     flameshot
     chromium

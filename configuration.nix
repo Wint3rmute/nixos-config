@@ -1,9 +1,4 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, pkgs, ... }:
-
 {
   imports = [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -31,7 +26,6 @@
   # Per-interface useDHCP will be mandatory in the future, so this generated config
   # replicates the default behaviour.
   networking.useDHCP = false;
-  networking.interfaces.enp0s31f6.useDHCP = false;
   systemd.services.NetworkManager-wait-online.enable = false;
   systemd.services.systemd-udev-settle.enable = false;
 
@@ -55,6 +49,7 @@
   services.xserver.desktopManager.gnome.enable = true;
 
   # Configure keymap in X11
+  # @Zwolin make an MR changing the line below to dvorak pl, I dare you
   services.xserver.layout = "pl";
   # services.xserver.xkbOptions = "eurosign:e";
 

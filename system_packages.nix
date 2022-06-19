@@ -22,8 +22,10 @@
     xorg.xinit
     acpilight
     xorg.xf86videointel
+    wireguard-tools
 
     # Cli
+    ffmpeg
     thefuck
     devour
     bat
@@ -43,6 +45,7 @@
     file
     telegram-cli
     freshfetch
+    nmap
 
     # Programming
     nixfmt
@@ -52,14 +55,17 @@
     xclip
     sumneko-lua-language-server
     neovide
-    android-studio
     rustup
     rust-analyzer
     cmake
     gnumake
     bintools
+    nodejs
+    orca-c
+    poetry
 
-    # GUI
+    # Gui
+    simplescreenrecorder
     dmenu
     alacritty
     firefox
@@ -79,6 +85,8 @@
     tdesktop
     xoscope
     audacity
+    gimp
+    discord
 
   ];
 

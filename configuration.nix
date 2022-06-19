@@ -1,9 +1,14 @@
-{ config, pkgs, ... }:
-{
+{ config, pkgs, ... }: {
   imports = [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./system_packages.nix
+    (if builtins.pathExists ./private.nix then
+      ./private.nix
+    else
+      ./no_private.nix)
   ];
+
+  # ++ lib.optional (builtins.pathExists ./private.nix ) .private.nix ;
 
   # Use the GRUB 2 boot loader.
   boot.loader.grub.enable = true;
@@ -66,7 +71,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.wint3rmute = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "video" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "video" "docker" ];
     shell = pkgs.zsh;
   };
 
@@ -76,6 +81,8 @@
   programs.neovim.viAlias = true;
   programs.neovim.vimAlias = true;
 
+  virtualisation.docker.enable = true;
+
   fonts.fonts = with pkgs;
     [ (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; }) ];
   # List services that you want to enable:
@@ -84,10 +91,10 @@
   services.openssh.enable = true;
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
+  # networking.firewall.allowedTCPPorts = [ 22 ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+  networking.firewall.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

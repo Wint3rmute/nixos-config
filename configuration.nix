@@ -65,13 +65,27 @@
   sound.enable = true;
   hardware.pulseaudio.enable = true;
 
+  #services.jack = {
+  #jackd.enable = true;
+  # support ALSA only programs via ALSA JACK PCM plugin
+  #alsa.enable = false;
+  # support ALSA only programs via loopback device (supports programs like Steam)
+  #loopback = {
+  #  enable = true;
+  # buffering parameters for dmix device to work with ALSA only semi-professional sound programs
+  #dmixConfig = ''
+  #  period_size 2048
+  #'';
+  #};
+  #};
+
   # Enable touchpad support (enabled default in most desktopManager).
   services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.wint3rmute = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "video" "docker" ];
+    extraGroups = [ "wheel" "video" "docker" "jackaudio" ];
     shell = pkgs.zsh;
   };
 
@@ -95,6 +109,18 @@
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   networking.firewall.enable = true;
+
+  nix = {
+    # automate `nix-store --optimise`
+    autoOptimiseStore = true;
+
+    # automate garbage collection
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 7d";
+    };
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

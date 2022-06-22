@@ -37,6 +37,7 @@
     wget
     gcc
     unzip
+    zip
     killall
     brightnessctl
     sox
@@ -46,6 +47,9 @@
     telegram-cli
     freshfetch
     nmap
+    entr
+    lilypond
+    timidity
 
     # Programming
     nixfmt
@@ -61,8 +65,15 @@
     gnumake
     bintools
     nodejs
-    orca-c
     poetry
+    lua
+    zola
+
+    # Music
+    orca-c
+    soundfont-ydp-grand
+    qsynth
+    pmidi
 
     # Gui
     simplescreenrecorder
@@ -87,6 +98,9 @@
     audacity
     gimp
     discord
+    zathura
+    monero-gui
+    keepass
 
   ];
 

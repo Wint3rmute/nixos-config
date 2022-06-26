@@ -85,17 +85,26 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.wint3rmute = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "video" "docker" "jackaudio" ];
+    extraGroups = [ "wheel" "video" "docker" "jackaudio" "networkmanager" ];
+    shell = pkgs.zsh;
+  };
+
+  # Define a user account. Don't forget to set a password with ‘passwd’.
+  users.users.olga = {
+    isNormalUser = true;
+    extraGroups = [ "wheel" "video" "docker" "jackaudio" "networkmanager" ];
     shell = pkgs.zsh;
   };
 
   nixpkgs.config.allowUnfree = true;
   programs.zsh.enable = true;
+  users.defaultUserShell = pkgs.zsh;
   programs.neovim.enable = true;
   programs.neovim.viAlias = true;
   programs.neovim.vimAlias = true;
 
   virtualisation.docker.enable = true;
+  virtualisation.docker.enableOnBoot = false;
 
   fonts.fonts = with pkgs;
     [ (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; }) ];

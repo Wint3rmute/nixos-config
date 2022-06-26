@@ -50,6 +50,7 @@
     entr
     lilypond
     timidity
+    xplr
 
     # Programming
     nixfmt
@@ -68,6 +69,9 @@
     poetry
     lua
     zola
+    protobuf
+    vscode
+    docker-compose
 
     # Music
     orca-c

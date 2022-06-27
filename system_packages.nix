@@ -51,6 +51,7 @@
     lilypond
     timidity
     xplr
+    pandoc
 
     # Programming
     nixfmt

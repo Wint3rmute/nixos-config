@@ -52,6 +52,8 @@
     timidity
     xplr
     pandoc
+    ripgrep
+    fd
 
     # Programming
     nixfmt

@@ -31,6 +31,7 @@
   # Per-interface useDHCP will be mandatory in the future, so this generated config
   # replicates the default behaviour.
   networking.useDHCP = false;
+  networking.networkmanager.enable = true;
   systemd.services.NetworkManager-wait-online.enable = false;
   systemd.services.systemd-udev-settle.enable = false;
 
@@ -51,7 +52,7 @@
 
   # Enable the Plasma 5 Desktop Environment.
   services.xserver.displayManager.gdm.enable = false;
-  services.xserver.desktopManager.gnome.enable = true;
+  # services.xserver.desktopManager.gnome.enable = true;
 
   # Configure keymap in X11
   # @Zwolin make an MR changing the line below to dvorak pl, I dare you
@@ -88,14 +89,7 @@
     extraGroups = [ "wheel" "video" "docker" "jackaudio" "networkmanager" ];
     shell = pkgs.zsh;
   };
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.olga = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" "video" "docker" "jackaudio" "networkmanager" ];
-    shell = pkgs.zsh;
-  };
-
+  
   nixpkgs.config.allowUnfree = true;
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
@@ -119,9 +113,15 @@
   # Or disable the firewall altogether.
   networking.firewall.enable = true;
 
+  environment.sessionVariables = rec { EDITOR = "vim"; };
+
   nix = {
     # automate `nix-store --optimise`
     autoOptimiseStore = true;
+    package = pkgs.nixFlakes;
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
 
     # automate garbage collection
     gc = {

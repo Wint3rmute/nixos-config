@@ -108,6 +108,7 @@
     zathura
     monero-gui
     keepass
+    redshift
 
   ];
 

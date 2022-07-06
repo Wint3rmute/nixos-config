@@ -89,7 +89,7 @@
     extraGroups = [ "wheel" "video" "docker" "jackaudio" "networkmanager" ];
     shell = pkgs.zsh;
   };
-  
+
   nixpkgs.config.allowUnfree = true;
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
@@ -114,6 +114,13 @@
   networking.firewall.enable = true;
 
   environment.sessionVariables = rec { EDITOR = "vim"; };
+  environment.pathsToLink = [ "/share/nix-direnv" ];
+  # if you also want support for flakes 
+  nixpkgs.overlays = [
+    (self: super: {
+      nix-direnv = super.nix-direnv.override { enableFlakes = true; };
+    })
+  ];
 
   nix = {
     # automate `nix-store --optimise`

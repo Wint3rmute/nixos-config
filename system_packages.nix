@@ -54,6 +54,8 @@
     pandoc
     ripgrep
     fd
+    mediainfo
+    usbutils
 
     # Programming
     nixfmt
@@ -75,6 +77,11 @@
     protobuf
     vscode
     docker-compose
+    direnv
+    nix-direnv
+    shellcheck
+    clang-tools
+    qemu
 
     # Music
     orca-c
@@ -109,6 +116,7 @@
     monero-gui
     keepass
     redshift
+    mpv
 
   ];
 
